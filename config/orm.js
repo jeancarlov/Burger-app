@@ -1,3 +1,7 @@
+// The ORM  talks to the database and sent it to the module so that the module can send it to the controtlle.
+
+
+
 // Import MySQL connection. from the connection.js fill inside the config folder
 var connection = require("../config/connection.js");
 
@@ -9,7 +13,7 @@ var connection = require("../config/connection.js");
 
 var orm = {
     selectAll: function (tableInput, cb) {
-        var queryString = "SELECT * FROM" + tableInput + ";";
+        var queryString = "SELECT * FROM " + tableInput + ";";
         console.log(queryString);
         connection.query(queryString, function(err, result) {
             if (err) {
