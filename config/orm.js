@@ -8,17 +8,27 @@ var connection = require("../config/connection.js");
 // updateOne()
 
 var orm = {
-    selectAll: function name(params) {
+    selectAll: function (tableInput, cb) {
+        var queryString = "SELECT * FROM" + tableInput + ";";
+        console.log(queryString);
+        connection.query(queryString, function(err, result) {
+            if (err) {
+              throw err;
+            }
+            cb(result);
+          });
         
     },
 
-    insertOne: function name(params) {
-        
-    },
+    // insertOne: function (tableInput,cols,vals, cb) {
+    //     var queryString = "INSERT INTO " + table;
 
-    updateOne: function name(params) {
         
-    }
+    // },
+
+    // updateOne: function name(params) {
+        
+    // }
 
 
 }
