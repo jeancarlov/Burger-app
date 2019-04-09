@@ -5,6 +5,7 @@
 // Import MySQL connection. from the connection.js fill inside the config folder
 var connection = require("../config/connection.js");
 
+
 // Create the methods that will execute the necessary MySQL commands in the controllers. These are the methods I will need to use in order to retrieve and store data in your database.
 
 // selectAll()
@@ -12,30 +13,60 @@ var connection = require("../config/connection.js");
 // updateOne()
 
 var orm = {
-    selectAll: function (tableInput, cb) {
-        var queryString = "SELECT * FROM " + tableInput + ";";
-        console.log(queryString);
-        connection.query(queryString, function(err, result) {
-            if (err) {
-              throw err;
-            }
-            cb(result);
-          });
-        
-    },
+  selectAll: function (tableInput, cb) {
+    var queryString = "SELECT * FROM " + tableInput + ";";
+    console.log(queryString);
+    connection.query(queryString, function (err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
 
-    // insertOne: function (tableInput,cols,vals, cb) {
-    //     var queryString = "INSERT INTO " + table;
+  },
 
-        
-    // },
+  // insertOne(create)
 
-    // updateOne: function name(params) {
-        
-    // }
+  insertOne: function (tableInput, cols, vals, cb) {
+    var queryString = "INSERT INTO " + tableInput + "(" +cols.toString() + ") values (?)";;
+
+    // queryString += " (";
+    // queryString += cols.toString();
+    // queryString += ") ";
+    // queryString += "VALUES (";
+    // queryString += printQuestionMarks(vals.length);
+    // queryString += ") ";
+
+    console.log(queryString);
+    
+    connection.query(queryString, vals, function(err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+
+  },
+
+  updateOne: function (tableInput,cols, vals, cb) {
+    var queryString = "UPDATE " + tableInput + "SET" + cols + " = " + vals + " WHERE" + condition + "";
+
+    console.log(queryString);
+    
+    connection.query(queryString, vals, function(err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+  }
 
 
 }
 
 // Export the orm object for the models (burger.js).
 module.exports = orm;
+
+

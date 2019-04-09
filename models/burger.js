@@ -6,6 +6,19 @@ var burger ={
         orm.selectAll("burger", function(res){
             cb(res);
         });
+    },
+
+    //create
+    create: function (col, vals, cb) {
+        orm.create("burger", col, vals, function (res) {
+            cb(res);
+        });  
+    },
+    update: function () {
+        orm.update("burger",colname, vals, condition, function(res) {
+            cb(res);
+          });
+        
     }
 }
 
