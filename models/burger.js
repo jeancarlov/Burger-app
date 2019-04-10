@@ -9,13 +9,13 @@ var burger ={
     },
 
     //create
-    create: function (col, vals, cb) {
+    insert: function (col, vals, cb) {
         orm.create("burger", col, vals, function (res) {
             cb(res);
         });  
     },
-    update: function () {
-        orm.update("burger",colname, vals, condition, function(res) {
+    update: function (objcol,condition,cb) {
+        orm.update("burger", objcol, condition, function(res) {
             cb(res);
           });
         

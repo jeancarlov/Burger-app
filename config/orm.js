@@ -5,6 +5,7 @@
 // Import MySQL connection. from the connection.js fill inside the config folder
 var connection = require("../config/connection.js");
 
+    
 
 // Create the methods that will execute the necessary MySQL commands in the controllers. These are the methods I will need to use in order to retrieve and store data in your database.
 
@@ -27,7 +28,7 @@ var orm = {
 
   // insertOne(create)
 
-  insertOne: function (tableInput, cols, vals, cb) {
+  create: function (tableInput, cols, vals, cb) {
     var queryString = "INSERT INTO " + tableInput + "(" +cols.toString() + ") values (?)";;
 
     // queryString += " (";
@@ -49,7 +50,7 @@ var orm = {
 
   },
 
-  updateOne: function (tableInput,cols, vals, cb) {
+  update: function (tableInput,cols, vals, cb) {
     var queryString = "UPDATE " + tableInput + "SET" + cols + " = " + vals + " WHERE" + condition + "";
 
     console.log(queryString);
