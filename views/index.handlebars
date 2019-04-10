@@ -1,20 +1,46 @@
 <h1>Burger!</h1>
 
-<h2>Eaten Burger!</h2>
-<ul>
-  {{#each burgers}}
-    {{#unless devour}}
-      
+<div class="eaten">
+  <h2>Eaten Burger!</h2>
+  <ul>
+    {{#each burgers}}
+    {{#unless devoured}}
+    {{!-- data is comming from the partials --}}
+    {{> burgers/burger-block devoured=true}}
     {{/unless}}
-  {{/each}}
-</ul>
+    {{/each}}
+  </ul>
+</div>
 
-<h2>Burger in the food menu</h2>
+<div class="menu">
+  <h2>Burger in the menu</h2>
 
-<ul>
-  {{#each burgers}}
-    {{#if devour}}
-     
+  <ul>
+    {{#each burgers}}
+    {{#if devoured}}
+    {{> burgers/burger-block devoured=false}}
+
     {{/if}}
-  {{/each}}
-</ul>
+    {{/each}}
+  </ul>
+
+</div>
+
+<div class="add">
+  <h2>Add a burger</h2>
+  <form class="create-form">
+
+    <div class="form-group">
+      <label for="burger-name">Burger Name:</label>
+      <input type="text" id="burger" name="name">
+    </div>
+
+    <div class="form-group">
+      <label for="hungry">Hungry?</label><br>
+      <input type="radio" name="devoured" value="1" checked> I wanted in the menu.<br>
+      <input type="radio" name="devoured" value="0"> I want to eat the burger.
+    </div>
+
+    <button type="submit-burger">Add burger</button>
+  </form>
+</div>
