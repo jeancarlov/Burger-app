@@ -11,18 +11,16 @@ $(function () {
     let newDevour = $(this).data("devoured");
 
     // to switch sides 
-    if (newDevour == true) {
-      newDevour == false;
+    if (newDevour === true) {
+      newDevour = false; // use  = for setting or changing // == or === is always comparing
     } else {
-      newDevour == true;
+      newDevour = true;
     };
 
     let newDevourState = {
-      devoured = newDevour
+      devoured: newDevour // is a colon because is a new object
     };
     console.log(newDevourState);
-  })
-
 
   // send the users input request
   $.ajax("/api/burger/" + id, {
@@ -35,13 +33,20 @@ $(function () {
       location.reload();
     }
   );
+})
 
-  $(".submit-burger").on("click", function (event) {
+
+
+
+$(".submit-burger").on("click", function (event) {
+    console.log("clicked the right button");
+    
+    alert("test")
     event.preventDefault();
     // create the new burger with the user input values from the form
     let newBurger = {
-      burger_name: ("#burger").val().trim(),
-      devoured: $("input[name=devoured]:checked").val().trim()
+      burger_name: $("#burger").val(),      
+      devoured: $("input[name=devoured]:checked").val()
     }
     console.log("burger object :", newBurger);
 

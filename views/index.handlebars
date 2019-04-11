@@ -4,10 +4,10 @@
   <h2>Eaten Burger!</h2>
   <ul>
     {{#each burgers}}
-    {{#unless devoured}}
+    {{#if devoured}}
     {{!-- data is comming from the partials --}}
     {{> burgers/burger-block devoured=true}}
-    {{/unless}}
+    {{/if}}
     {{/each}}
   </ul>
 </div>
@@ -17,10 +17,10 @@
 
   <ul>
     {{#each burgers}}
-    {{#if devoured}}
+    {{#unless devoured}}
     {{> burgers/burger-block devoured=false}}
 
-    {{/if}}
+    {{/unless}}
     {{/each}}
   </ul>
 
@@ -37,10 +37,10 @@
 
     <div class="form-group">
       <label for="hungry">Hungry?</label><br>
-      <input type="radio" name="devoured" value="1" checked> I wanted in the menu.<br>
-      <input type="radio" name="devoured" value="0"> I want to eat the burger.
+      <input type="radio" name="devoured" value="0" checked> I wanted in the menu.<br>
+      <input type="radio" name="devoured" value="1"> I want to eat the burger.
     </div>
 
-    <button type="submit-burger">Add burger</button>
+    <button type="submit" class="submit-burger">Add burger</button>
   </form>
 </div>

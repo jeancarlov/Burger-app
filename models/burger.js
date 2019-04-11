@@ -9,7 +9,7 @@ var burger ={
     },
 
     //create
-    insert: function (col, vals, cb) {
+    create: function (col, vals, cb) {
         orm.create("burger", col, vals, function (res) {
             cb(res);
         });  
